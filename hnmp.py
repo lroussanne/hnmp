@@ -169,6 +169,10 @@ class SNMP(object):
 
             return cmdgen.UsmUserData(self.username, authKey=authkey, privKey=privkey,
                                       authProtocol=authproto, privProtocol=privproto)
+                                      
+       elif self.version == 1:
+            return cmdgen.CommunityData(self.community, self.community,0)
+
         # Default to version 2c
         else:
             return cmdgen.CommunityData(self.community)
